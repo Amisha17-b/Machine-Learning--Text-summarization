@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-theme="aditi">
+  {% extends "base.html" %} {% block body %}
+  <div>
+    <div
+      class="login flex w-full justify-center content-center text-center pt-20"
+    >
+      <form
+        action="{% url 'onLogin' %}"
+        method="POST"
+        class="border-2 border-black rounded-lg p-5"
+      >
+        {% csrf_token %}
+        <label for="username" class="label">
+          <span class="label-text">Username</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Type here"
+          class="input input-ghost w-full max-w-xs"
+          name="email"
+          required
+        />
+        <br />
+        <label for="username" class="label">
+          <span class="label-text">Password</span>
+        </label>
+        <input
+          type="password"
+          placeholder="Type here"
+          class="input input-ghost w-full max-w-xs"
+          pattern=".{8,15}"
+          required
+          title="8 to 15 characters"
+          name="pass"
+        />
+        <button type="submit" class="btn btn-ghost text-center w-full mt-3">
+          Login
+        </button>
+        <br />
+        <label for="Don't Have an account" class="label flex justify-center">
+          <a href="{% url 'register' %}" class="label-text-alt"
+            >Don't Have an account ?</a
+          ></label
+        >
+      </form>
+    </div>
+  </div>
+  {% endblock %}
+</html>

@@ -1,0 +1,56 @@
+<html data-theme="adish">
+  {% extends "base.html" %} {% block body %}
+  <div>
+    <form method="POST" action="{% url 'gen_summarize' %}">
+      {% csrf_token %}
+      <div class="flex w-full flex-col h-screen p-20">
+        <div class="flex w-full p-2">
+          <h1 class="w-1/4">Gen Summary</h1>
+          <div class="w-2/4"></div>
+          <div class="w-1/4">
+            <input type="range" min="3" max="9" value={{ range|default:"6" }}
+            step="3" class="range range-sm" name="range" />
+            <div class="w-full flex justify-between text-xs px-2">
+              <span>Short</span>
+              <span>Medium</span>
+              <span>Large</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex w-full h-3/4">
+          <div
+            class="grid h-full flex-grow card bg-base-300 rounded-box place-items-center"
+          >
+            <textarea
+              class="textarea textarea-accent w-full h-full"
+              placeholder="Enter your text here"
+              id="input"
+              name="input"
+              required
+            >
+{{input}}</textarea
+            >
+          </div>
+          <div class="divider divider-horizontal h-full"></div>
+          <div
+            class="grid h-full flex-grow card bg-base-300 rounded-box place-items-center"
+          >
+            <textarea
+              class="textarea textarea-accent w-full h h-full"
+              placeholder="Output text will appear here"
+              readonly
+              id="output"
+              name="output"
+            >
+{{result}}</textarea
+            >
+          </div>
+        </div>
+        <div class="flex w-full h-1/4 justify-center">
+          <button class="btn btn-ghost m-auto" type="submit">Summarize</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  {% endblock %}
+</html>

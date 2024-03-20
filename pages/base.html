@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html data-theme="aditi">
+  {% load static %}
+  <head>
+    <title>Information Synthesis</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% if messages %} {% for msg in messages %} {% if msg.tags %}
+    <script>
+      alert("{{ msg }}");
+    </script>
+    {% endif %} {% endfor %} {% endif %}
+  </head>
+  <body style="height: 100%">
+    <style>
+      .logout {
+        display: none;
+      }
+    </style>
+    <div class="z-1 navbar bg-base-100">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </label>
+          <ul
+            tabindex="0"
+            class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li><a href="{% url 'index' %}">Summarizer</a></li>
+            <li><a href="{% url 'gensummary' %}">Abstractive Summary</a></li>
+            <li class="{% if not user %}logout{% endif %}">
+              <a href="{% url 'logout' %}">Log out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="navbar-center">
+        <a href="{% url 'index' %}" class="btn btn-ghost normal-case text-xl"
+          >Information Synthesis</a
+        >
+      </div>
+      <div class="navbar-end">
+        <a href="{% url 'login' %}">
+          <button class="btn btn-ghost btn-circle">
+            <div class="indicator">
+              <img src="{% static 'login.svg' %}" alt=" " />
+            </div>
+          </button>
+        </a>
+      </div>
+    </div>
+    <div style="position: relative">{% block body %} {% endblock %}</div>
+<br>
+<br>
+    <!-- <footer>
+      <p>&copy; 2024 Information Synthesis by Adish Bhagat| All rights reserved.</p>
+    </footer> -->
+  </body>
+</html>
