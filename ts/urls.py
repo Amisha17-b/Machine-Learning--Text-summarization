@@ -23,3 +23,4 @@ urlpatterns = [
     path('', include('tsapp.urls')),
     path('admin/', admin.site.urls),
 ]
+ 

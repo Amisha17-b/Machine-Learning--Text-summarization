@@ -7,6 +7,15 @@ import numpy as np;
 
 
 def read_article(filedata):
+  """
+    Reads an article and preprocesses it by splitting into sentences.
+
+    Args:
+        filedata (str): The content of the article.
+
+    Returns:
+        list: A list of sentences, where each sentence is represented as a list of words.
+    """
   # file = open(file_name)
   # filedata = file.read()
 
@@ -27,6 +36,17 @@ def read_article(filedata):
 # print(read_article("india.txt"))
 
 def sentence_similarity(sent1,sent2,stopword=None):
+  """
+    Computes the cosine similarity between two sentences.
+
+    Args:
+        sent1 (list): The first sentence.
+        sent2 (list): The second sentence.
+        stopword (list): List of stopwords to ignore.
+
+    Returns:
+        float: Cosine similarity between the two sentences.
+    """
   if stopword is None:
     stopwords=[]
   stopwords=[w.lower() for w in sent1]
@@ -48,6 +68,16 @@ def sentence_similarity(sent1,sent2,stopword=None):
 
 
 def gen_sim_matrix(sentences,stop_words):
+  """
+    Generates a similarity matrix between sentences.
+
+    Args:
+        sentences (list): List of sentences.
+        stop_words (list): List of stopwords.
+
+    Returns:
+        numpy.ndarray: A 2D array representing the similarity matrix.
+    """
   similarity_matrix = np.zeros((len(sentences),len(sentences)))
   for idx1 in range(len(sentences)):
     for idx2 in range(len(sentences)):
@@ -58,6 +88,16 @@ def gen_sim_matrix(sentences,stop_words):
 
 
 def generate_summary(data,top_n=5):
+  """
+    Generates a summary of the given data.
+
+    Args:
+        data (str): The content of the data.
+        top_n (int): Number of sentences to include in the summary.
+
+    Returns:
+        str: The generated summary.
+    """
   stop_words = stopwords.words('english')
   summarize_text = []
   # sentences = input()
