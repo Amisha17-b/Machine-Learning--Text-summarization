@@ -1,5 +1,5 @@
 
-Brief project overview goes here...
+The Text Summarization App is a web application built with Django that allows users to summarize large blocks of text quickly and efficiently. Leveraging advanced natural language processing (NLP) techniques, the app generates concise summaries of input text, enabling users to extract key insights and save time when analyzing documents, articles, or research papers.
 
 ## Technologies Used
 
