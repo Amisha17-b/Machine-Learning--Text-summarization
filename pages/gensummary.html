@@ -1,6 +1,6 @@
 <html data-theme="adish">
   {% extends "base.html" %} {% block body %}
-  <div>
+  <div><!-- Form for text summarization -->
     <form method="POST" action="{% url 'gen_summarize' %}">
       {% csrf_token %}
       <div class="flex w-full flex-col h-screen p-20">
@@ -8,6 +8,8 @@
           <h1 class="w-1/4">Gen Summary</h1>
           <div class="w-2/4"></div>
           <div class="w-1/4">
+
+             <!-- Range input for selecting summary length -->
             <input type="range" min="3" max="9" value={{ range|default:"6" }}
             step="3" class="range range-sm" name="range" />
             <div class="w-full flex justify-between text-xs px-2">
@@ -31,6 +33,7 @@
 {{input}}</textarea
             >
           </div>
+          <!-- Divider between input and output text areas -->
           <div class="divider divider-horizontal h-full"></div>
           <div
             class="grid h-full flex-grow card bg-base-300 rounded-box place-items-center"

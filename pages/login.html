@@ -2,14 +2,14 @@
 <html data-theme="aditi">
   {% extends "base.html" %} {% block body %}
   <div>
-    <div
-      class="login flex w-full justify-center content-center text-center pt-20"
-    >
+    <div class="login flex w-full justify-center content-center text-center pt-20">
+      <!-- Login form with POST method sending data to 'onLogin' URL -->
       <form
         action="{% url 'onLogin' %}"
         method="POST"
         class="border-2 border-black rounded-lg p-5"
       >
+      <!-- CSRF token to prevent Cross-Site Request Forgery -->
         {% csrf_token %}
         <label for="username" class="label">
           <span class="label-text">Username</span>
@@ -34,10 +34,12 @@
           title="8 to 15 characters"
           name="pass"
         />
+        <!-- Submit button for login form -->
         <button type="submit" class="btn btn-ghost text-center w-full mt-3">
           Login
         </button>
         <br />
+         <!-- Label for registration link -->
         <label for="Don't Have an account" class="label flex justify-center">
           <a href="{% url 'register' %}" class="label-text-alt"
             >Don't Have an account ?</a

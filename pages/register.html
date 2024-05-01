@@ -1,18 +1,28 @@
 {% extends "base.html" %} {% block body %}
+<!-- Main container for the registration form, with flexbox to center it vertically -->
 <div class="flex flex-col items-center pt-20">
+
+	<!-- Registration form with POST method -->
 	<form method="POST" action="{% url 'onRegister' %}" class="border-2 border-black rounded-lg p-5">
 		{% csrf_token %}
+		<!-- Username input field -->
 		<label for="username" class="label">
 		<span class="label-text">Username</span>
 		</label>
 		<input type="text" placeholder="Enter your username" class="input input-ghost w-full max-w-xs" required/> <br>
-		<label for="username" class="label">
+		
+		 <!-- Email input field -->
+		<label for="email" class="label">
 		<span class="label-text">Email</span>
 		</label>
 		<input type="email" placeholder="Enter your Email" class="input input-ghost w-full max-w-xs" name="email" required/> <br>
+		
 		<span class="label-text">password</span> 
+		<!-- Label for password -->
 		</label>
 		<input type="password" placeholder="Enter your password" class="input input-ghost w-full max-w-xs" pattern=".{8,15}" required title="8 to 15 characters" name="pass"/> <br>
+		
+		<!-- Submit button -->
 		<button type="submit" class="btn btn-ghost text-center w-full mt-3">Register</button>
 		<label for="Already Have an account" class="label flex justify-center"> <a href="{% url 'login' %}" class="label-text-alt">Already Have an account ?</a></label>
 	</form>
