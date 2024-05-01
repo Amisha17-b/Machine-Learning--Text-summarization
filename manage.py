@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 # This line indicates that this script should be executed using the Python interpreter found in the environment's PATH.
 
+
 import os
 import sys
 
